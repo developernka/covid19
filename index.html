@@ -4,8 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID-19</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <a href="status.json" target="_blank">Status</a>
+    <div id="main"></div>
+    <script>
+      $.get('https://api.covid19india.org/data.json', function(resp) {
+        $('#main').html(resp);
+      });
+    </script>
   </body>
 </html>
