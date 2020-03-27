@@ -9,11 +9,10 @@ $.get(
       if (row['gsx$dateannounced'])
         var trHtm = `<tr id="${row['gsx$patientnumber']}">`;
       trHtm += `<td>${row['gsx$dateannounced']}</td>`;
-      trHtm += `<td>${row['gsx$currentstatus'](
-        row['gsx$dateannounced'] != row['gsx$statuschangedate']
+      trHtm += `<td>${row['gsx$currentstatus'] +
+        (row['gsx$dateannounced'] != row['gsx$statuschangedate']
           ? ' on ' + row['gsx$statuschangedate']
-          : ''
-      )}</td>`;
+          : '')}</td>`;
       trHtm += `<td>${row['gsx$detectedstate']}</td>`;
       trHtm += `<td>${
         row['gsx$detecteddistrict'] == row['gsx$detectedcity']
