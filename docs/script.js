@@ -28,7 +28,7 @@ $.get(
         ' ' +
         row['gsx$agebracket']['$t']
       ).trim()}</td>`;
-      trHtm += `<td>${row['gsx$note']['$t']}</td>`;
+      trHtm += `<td>${row['gsx$notes']['$t']}</td>`;
       trHtm += `<td>${
         (row['gsx$nationality']['$t'] + '').toLowerCase().indexOf('india') == -1
           ? row['gsx$nationality']['$t']
