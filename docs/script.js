@@ -30,7 +30,7 @@ $.get(
       ).trim()}</td>`;
       trHtm += `<td>${row['gsx$note']}</td>`;
       trHtm += `<td>${
-        row['gsx$nationality'].toLowerCase().indexOf('india') == -1
+        (row['gsx$nationality'] + '').toLowerCase().indexOf('india') == -1
           ? row['gsx$nationality']
           : ''
       }</td>`;
