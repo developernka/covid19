@@ -15,7 +15,7 @@
     <div id="main"></div>
     <script>
       $('#main').html("Loading ...");
-      $.get('https://api.covid19india.org/raw_data.json', function(resp) {
+      $.get('https://spreadsheets.google.com/feeds/list/1nzXUdaIWC84QipdVGUKTiCSc5xntBbpMpzLm6Si33zk/od6/public/values?alt=json', function(resp) {
         $('#main').html(JSON.stringify(resp));
       });
     </script>
