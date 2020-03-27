@@ -12,15 +12,11 @@
   </head>
   <body>
     <a href="status.json" target="_blank">Status</a>
-    <div id="main1"></div>
-    <div id="main2"></div>
+    <div id="main"></div>
     <script>
       $('#main').html("Loading ...");
       $.get('https://api.covid19india.org/raw_data.json', function(resp) {
-        $('#main1').html(JSON.stringify(resp));
-      });
-      $.get('https://www.covidvisualizer.com/api', function(resp) {
-        $('#main2').html(JSON.stringify(resp));
+        $('#main').html(JSON.stringify(resp));
       });
     </script>
   </body>
