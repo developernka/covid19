@@ -14,6 +14,7 @@
     <a href="status.json" target="_blank">Status</a>
     <div id="main"></div>
     <script>
+      $('#main').html("Loading ...");
       $.get('https://api.covid19india.org/data.json', function(resp) {
         $('#main').html(JSON.stringify(resp));
       });
