@@ -6,35 +6,35 @@ $.get(
     console.log(json.feed.entry.length);
     var tbodyHtm = '';
     $(json.feed.entry).each(function(r, row) {
-      if (row['gsx$dateannounced'])
-        var trHtm = `<tr id="${row['gsx$patientnumber']}">`;
-      trHtm += `<td>${row['gsx$dateannounced']}</td>`;
-      trHtm += `<td>${row['gsx$currentstatus'] +
-        (row['gsx$dateannounced'] != row['gsx$statuschangedate']
-          ? ' on ' + row['gsx$statuschangedate']
+      if (row['gsx$dateannounced']['$t'])
+        var trHtm = `<tr id="${row['gsx$patientnumber']['$t']}">`;
+      trHtm += `<td>${row['gsx$dateannounced']['$t']}</td>`;
+      trHtm += `<td>${row['gsx$currentstatus']['$t'] +
+        (row['gsx$dateannounced']['$t'] != row['gsx$statuschangedate']['$t']
+          ? ' on ' + row['gsx$statuschangedate']['$t']
           : '')}</td>`;
-      trHtm += `<td>${row['gsx$detectedstate']}</td>`;
+      trHtm += `<td>${row['gsx$detectedstate']['$t']}</td>`;
       trHtm += `<td>${
-        row['gsx$detecteddistrict'] == row['gsx$detectedcity']
-          ? row['gsx$detecteddistrict']
+        row['gsx$detecteddistrict']['$t'] == row['gsx$detectedcity']['$t']
+          ? row['gsx$detecteddistrict']['$t']
           : (
-              row['gsx$detecteddistrict'] +
+              row['gsx$detecteddistrict']['$t'] +
               ' ' +
-              row['gsx$detecteddistrict']
+              row['gsx$detecteddistrict']['$t']
             ).trim()
       }</td>`;
       trHtm += `<td>${(
-        row['gsx$gender'] +
+        row['gsx$gender']['$t'] +
         ' ' +
-        row['gsx$agebracket']
+        row['gsx$agebracket']['$t']
       ).trim()}</td>`;
-      trHtm += `<td>${row['gsx$note']}</td>`;
+      trHtm += `<td>${row['gsx$note']['$t']}</td>`;
       trHtm += `<td>${
-        (row['gsx$nationality'] + '').toLowerCase().indexOf('india') == -1
-          ? row['gsx$nationality']
+        (row['gsx$nationality']['$t'] + '').toLowerCase().indexOf('india') == -1
+          ? row['gsx$nationality']['$t']
           : ''
       }</td>`;
-      trHtm += `<td><a href="${row['gsx$source1']}">View</a> <a href="${row['gsx$source2']}">View</a> <a href="${row['gsx$source3']}">View</a></td>`;
+      trHtm += `<td><a href="${row['gsx$source1']['$t']}">View</a> <a href="${row['gsx$source2']['$t']}">View</a> <a href="${row['gsx$source3']['$t']}">View</a></td>`;
       trHtm += `</tr>`;
       tbodyHtm += trHtm;
     });
