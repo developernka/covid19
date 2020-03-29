@@ -6,7 +6,7 @@ $.get(
     console.log(json.feed.entry.length);
     var tbodyHtm = '';
     $(json.feed.entry).each(function(r, row) {
-      if (row['gsx$currentstatus']['$t'])
+      if (row['gsx$currentstatus']['$t'].trim() != '')
         var trHtm = `<tr id="${row['gsx$patientnumber']['$t']}">`;
       trHtm += `<td>${row['gsx$dateannounced']['$t']}</td>`;
       trHtm += `<td>${row['gsx$currentstatus']['$t'] +
