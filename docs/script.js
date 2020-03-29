@@ -6,7 +6,7 @@ $.get(
     console.log(json.feed.entry.length);
     var tbodyHtm = '';
     $(json.feed.entry).each(function(r, row) {
-      if (row['gsx$dateannounced']['$t'])
+      if (row['gsx$currentstatus']['$t'])
         var trHtm = `<tr id="${row['gsx$patientnumber']['$t']}">`;
       trHtm += `<td>${row['gsx$dateannounced']['$t']}</td>`;
       trHtm += `<td>${row['gsx$currentstatus']['$t'] +
@@ -36,7 +36,7 @@ $.get(
       }</td>`;
       trHtm += `<td><a href="${row['gsx$source1']['$t']}">View</a> <a href="${row['gsx$source2']['$t']}">View</a> <a href="${row['gsx$source3']['$t']}">View</a></td>`;
       trHtm += `</tr>`;
-      tbodyHtm += trHtm;
+      tbodyHtm = trHtm + tbodyHtm;
     });
     $('#main>tbody').html(tbodyHtm);
     $('#loading').hide();
