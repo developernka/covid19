@@ -41,6 +41,7 @@ function showSearchBar() {
     });
     $("#state").html(htm);
     $("#state").change(function () {
+      localStorage.state = $("#state").val();
       db.state.get($(this).val()).then(state => {
         let htm = "<option value=''>Select District</option>";
         state.districtData.forEach(district => {
@@ -48,13 +49,19 @@ function showSearchBar() {
         });
         $("#district").html(htm);
         $("#district").change(function () {
+          localStorage.district = $("#district").val();
           showTable({
             statecode: $("#state").val(),
             detecteddistrict: $("#district").val()
           });
         });
+        $("#district").val(localStorage.district);
+        $("#district").trigger('change');
       });
     });
+    $("#state").val(localStorage.state);
+    $("#state").trigger('change');
+
     $("#dateannounced").change(function () {
       if ($("#dateannounced").val() === "") {
         showTable({
@@ -78,10 +85,12 @@ function showTable(query) {
     console.log(rows);
     let htm = "";
     rows.forEach(row => {
-      htm += `<tr title='${JSON.stringify(row, null, 4)}' ><td>${row.dateannounced}</td><td>${row.detectedcity}</td><td>${row.numcases > 1 ? "<span class='text-danger'>" + row.numcases + '</span>' : row.gender + " " + row.agebracket}</td></tr>`;
+      htm += `<tr title='${JSON.stringify(row, null, 4)}' ><td>${row.dateannounced}</td><td>${row.detectedcity}</td><td>${row.numcases == 1 ? row.gender + " " + row.agebracket : `<span class='text-${row.numcases > 0 ? 'danger' : 'success'}'>` + row.numcases + '</span>'}</td></tr>`;
       console.log('row');
     });
     $("#main tbody").html(htm);
     console.timeEnd('showTable');
   });
 }
+
+//showTable({ statecode: localStorage.state, detecteddistrict: localStorage.district });
