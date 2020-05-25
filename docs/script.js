@@ -56,11 +56,18 @@ function showSearchBar() {
       });
     });
     $("#dateannounced").change(function () {
-      showTable({
-        statecode: $("#state").val(),
-        detecteddistrict: $("#district").val(),
-        dateannounced: $("#dateannounced").val()
-      });
+      if ($("#dateannounced").val() === "") {
+        showTable({
+          statecode: $("#state").val(),
+          detecteddistrict: $("#district").val()
+        });
+      } else {
+        showTable({
+          statecode: $("#state").val(),
+          detecteddistrict: $("#district").val(),
+          dateannounced: $("#dateannounced").val()
+        });
+      }
     })
   });
 }
