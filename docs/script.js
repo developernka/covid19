@@ -71,7 +71,7 @@ function showTable(query) {
     console.log(rows);
     let htm = "";
     rows.forEach(row => {
-      htm += `<tr title='${JSON.stringify(row, null, 4)}' ><td>${row.dateannounced}</td><td>${row.detectedcity}</td><td>${row.patientnumber}</td><td>${row.gender}</td><td>${row.agebracket}</td><td>${row.numcases}</td></tr>`;
+      htm += `<tr title='${JSON.stringify(row, null, 4)}' ><td>${row.dateannounced}</td><td>${row.detectedcity}</td><td>${row.gender}/${row.agebracket}</td><td>${row.numcases}</td></tr>`;
       console.log('row');
     });
     $("#main tbody").html(htm);
