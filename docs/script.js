@@ -13,7 +13,7 @@ function getLatest(n) {
     db.patient.bulkPut(resp.raw_data, console.log);
     try {
       let lastDate = resp.raw_data[resp.raw_data.length - 1].dateannounced.split('/').reverse().join('/');
-      if (new Date(lastDate).getTime() < new Date().getTime() - 2 * 24 * 3600 * 1000) {
+      if (new Date(lastDate).getTime() < new Date().getTime() - 1 * 24 * 3600 * 1000) {
         localStorage.latestDb = n + 1;
         getLatest(n + 1);
       }
@@ -22,7 +22,7 @@ function getLatest(n) {
     }
   });
 }
-let latestDb = 1 | localStorage.latestDb;
+let latestDb = 1 | parseInt(localStorage.latestDb);
 getLatest(latestDb);
 
 function getStateDistrict() {
