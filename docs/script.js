@@ -22,7 +22,7 @@ function getLatest(n) {
     }
   });
 }
-let latestDb = 1 | parseInt(localStorage.latestDb);
+let latestDb = 1 || parseInt(localStorage.latestDb);
 getLatest(latestDb);
 
 function getStateDistrict() {
